@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.mat-tab-label {
+    font-size: 12px;
+}
+
+.mat-tab-label.mat-tab-label-active {
+    color: #000 !important;
+    font-weight: 700;
+}
+
+.mat-ink-bar {
+    background: #000 !important;
+}

@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="../../assets/logo.svg" alt="" width="150px">
+            </div>
+
+            <div class="profile-noti">
+                <img src="../../assets/notification.png" alt="" width="25px">
+                <div class="profile" (click)="onProfile()">
+                    <div class="name">
+                        Ernesto Ruiz
+                        <img src="../../assets/arrow.svg" alt="">
+                    </div>
+                    <div class="initial-name">
+                        E
+                    </div>
+
+                    <div class="options-profile" id="profile">
+                        <nav class="options">
+                            <a (click)="editProfile()">Editar Perfil</a>
+                            <a (click)="changePass()">Cambiar contraseña</a>
+                            <a href="">Cerrar sesión</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="contenido">
+        <div class="main">
+            <nav id="main">
+                <a routerLink="./usuarios" class="link active">Usuarios</a>
+                <a routerLink="./transacciones" class="link">Transacciones</a>
+                <a routerLink="./campanias" class="link">Campañas</a>
+                <a routerLink="./marketplace" class="link">Marketplace</a>
+            </nav>
+        </div>
+
+        <div class="container-route">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <footer>
+        Footer
+    </footer>
+</div>

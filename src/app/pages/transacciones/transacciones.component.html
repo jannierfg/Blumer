@@ -1,0 +1,164 @@
+<div class="container">
+    <div class="title">
+        <h3 *ngIf="!view">Transacciones</h3>
+        <h3 class="selected" *ngIf="view">1 elemento seleccionado</h3>
+    </div>
+
+    <div class="body-user">
+        <div class="actions">
+            <div class="bloqueo" *ngIf="view">
+                <img src="../../../assets/bloquear.png" alt="" width="20px">Bloquear
+            </div>
+
+            <div class="suspender" *ngIf="view">
+                <img src="../../../assets/suspender.png" alt="" width="20px">Suspender
+            </div>
+
+            <div class="input" *ngIf="!view">
+                <img src="../../../assets/search.svg" alt="" width="20px">
+                <input type="text" placeholder="Buscar usuarios">
+            </div>
+        </div>
+
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Movimientos">
+
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+
+                        <!-- Checkbox Column -->
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef>
+
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox (change)="changeCheck($event.checked, row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="position">
+                            <th mat-header-cell *matHeaderCellDef> No. </th>
+                            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        </ng-container>
+
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="apellido">
+                            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                            <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="carbonpay">
+                            <th mat-header-cell *matHeaderCellDef> Carbbonpay </th>
+                            <td mat-cell *matCellDef="let element"> {{element.carbonpay}} </td>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="type">
+                            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                        </ng-container>
+
+                        <!-- Action Column -->
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-button (click)="edit(element.position)">. . .</button>
+
+                                <div class="edit-info" id="{{'edit' + element.position}}">
+                                    <nav class="options">
+                                        <a routerLink="../editarinfo">Editar información</a>
+                                        <a (click)="changePass()">Bloquear</a>
+                                        <a href="">Suspender cuenta</a>
+                                    </nav>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Billeteras">
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+
+                        <!-- Checkbox Column -->
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef>
+
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox (change)="changeCheck($event.checked, row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="position">
+                            <th mat-header-cell *matHeaderCellDef> No. </th>
+                            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        </ng-container>
+
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="apellido">
+                            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                            <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="carbonpay">
+                            <th mat-header-cell *matHeaderCellDef> Carbbonpay </th>
+                            <td mat-cell *matCellDef="let element"> {{element.carbonpay}} </td>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="type">
+                            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                        </ng-container>
+
+                        <!-- Action Column -->
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-button (click)="edit(element.position)">. . .</button>
+
+                                <div class="edit-info" id="{{'edit' + element.position}}">
+                                    <nav class="options">
+                                        <a routerLink="../editarinfo">Editar información</a>
+                                        <a (click)="changePass()">Bloquear</a>
+                                        <a href="">Suspender cuenta</a>
+                                    </nav>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

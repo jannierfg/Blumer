@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="title">
+        <h3>Editar información</h3>
+    </div>
+
+    <div class="body-user">
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Datos personales">
+                <div class="row">
+                    <div class="column">
+                        <div class="inputs">
+                            <label for="">USERNAME</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="section">
+                            <div class="initial-name"><span>E</span></div>
+                            <label>Cargar imagen</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column">
+                        <div class="inputs">
+                            <label for="">NOMBRE</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="inputs">
+                            <label for="">APELLIDO</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column">
+                        <div class="inputs">
+                            <label for="">FECHA DE NACIMIENTO</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="inputs">
+                            <label for="">SEXO</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="save" (click)="onSave()">Guardar</button>
+                    <button (click)="onCancel()">Cancelar</button>
+                </div>
+            </mat-tab>
+            <mat-tab label="Contraseña">
+                <div class="row">
+                    <div class="column">
+                        <div class="inputs">
+                            <label for="">CAMBIAR CONTRASEÑA</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column">
+                        <div class="inputs">
+                            <label for="">CONFIRMAR NUEVA CONTRASEÑA</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="save" (click)="onSave()">Guardar</button>
+                    <button (click)="onCancel()">Cancelar</button>
+                </div>
+            </mat-tab>
+            <mat-tab label="Billetera">
+                <div class="billetera">
+                    <div class="section-b">
+                        <label for="">SALDO EN LA WALLET</label>
+                        <span class="saldo">1280 CP</span>
+                    </div>
+
+                    <div class="section-add">
+                        <label for="">AGREGAR O RESTAR SALDO</label>
+                        <div class="input">
+                            <button class="button">-</button>
+                            <input type="text" value="0">
+                            <button class="button">+</button>
+                        </div>
+                        <button class="save" (click)="onSave()">Modificar saldo</button>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

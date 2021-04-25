@@ -1,0 +1,69 @@
+.login {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    max-width: 320px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.form .logo {
+    padding-bottom: 3.5em;
+}
+
+.input {
+    padding-bottom: 1em;
+    position: relative;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-left: 18px;
+    font-weight: normal;
+    padding-bottom: 5px;
+}
+
+input {
+    display: block;
+    margin: auto;
+    width: 90%;
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: 1px solid #eee;
+    background: #f3f3f3;
+}
+
+input:focus {
+    outline-style: none;
+}
+
+.input img {
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.form-container a {
+    display: block;
+    color: #00CABB;
+    margin-bottom: 15px;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px 15px;
+    background: linear-gradient(to right, #00CDA0, #00CABB, #00C2E6);
+    border-radius: 30px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+}
