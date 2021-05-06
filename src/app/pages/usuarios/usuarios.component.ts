@@ -1,31 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { SelectionModel } from '@angular/cdk/collections';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  apellido: string;
-  carbonpay: string;
-  type: string;
-  action: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-  { position: 2, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'EMPRESA', action: '' },
-  { position: 3, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'EMPRENDIMIENTO', action: '' },
-  { position: 4, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'FUNDACION', action: '' },
-  { position: 5, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'INFLUENCER', action: '' },
-  { position: 6, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-  { position: 7, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-  { position: 8, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-  { position: 9, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-  { position: 10, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-  { position: 11, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-  { position: 12, name: 'Pedro Jose', apellido: 'Perez Sanchez', carbonpay: '1726 CP', type: 'NORMAL', action: '' },
-];
+import { DashService } from '../../services/dash.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -34,17 +10,30 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class UsuariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', 'position', 'name', 'apellido', 'carbonpay','type', 'action'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  displayedColumns: string[] = ['select', 'first_name', 'last_name', 'phone', 'email', 'wallet', 'action'];
+  dataSource: any = [];
+  // selection = new SelectionModel<PeriodicElement>(true, []);
+  users: any = [];
+  selection: any = [];
 
   view: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(private dashService: DashService) { }
 
   ngOnInit(): void {
-    setTimeout(() => this.dataSource.paginator = this.paginator);
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.dashService.getUsers(1, 'cuetoadolfo').subscribe(
+      res => {
+        this.users = res;
+        this.dataSource = new MatTableDataSource(this.users);
+        this.dataSource.paginator = this.paginator;
+      },
+      err => console.log(err)
+    )
   }
 
   edit(element) {
@@ -65,6 +54,5 @@ export class UsuariosComponent implements OnInit {
 
   changeCheck(event, row) {
     this.view = event;
-    console.log(row)
   }
 }

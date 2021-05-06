@@ -47,9 +47,10 @@ input:focus {
 
 .input img {
     position: absolute;
-    top: 40px;
+    top: 34px;
     right: 15px;
     cursor: pointer;
+    width: 25px;
 }
 
 .form-container a {
@@ -66,4 +67,18 @@ input:focus {
     border: 0;
     color: #fff;
     cursor: pointer;
+}
+
+.text-required {
+    color: #00CABB;
+    font-size: 13px;
+}
+
+.msg-error {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    color: #f5f5f5;
+    background: #00CABB;
+    box-shadow: 0px 0px 9px 0px #00CDA0;
 }

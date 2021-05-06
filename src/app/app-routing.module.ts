@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { PagesComponent } from './pages/pages.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthLogoutGuard } from './guards/auth-logout.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'home', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
-  //{ path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),canActivate: [CanActivateGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthLogoutGuard] },
+  { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

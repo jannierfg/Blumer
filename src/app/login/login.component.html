@@ -5,18 +5,26 @@
         </div>
 
         <div class="form-container">
-            <div class="input">
-                <label>Usuario</label>
-                <input type="text" placeholder="correo@email.com">
+            <div class="msg-error" *ngIf="errorMsg">
+                Error al ingresar su correo o contraseña, verifique y vuelva a intentar.
             </div>
-            <div class="input">
-                <label>Contraseña</label>
-                <input type="text" placeholder="**********">
-                <img src="../../assets/view.svg" alt="">
-            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="input">
+                    <label>Usuario</label>
+                    <input type="text" placeholder="correo@email.com" [formControl]="form.controls['username']">
+                    <div class="text-required" *ngIf="form.controls['username'].hasError('required') && form.controls['username'].touched">El usuario es requerido.</div>
+                </div>
+                <div class="input">
+                    <label>Contraseña</label>
+                    <input [type]="show ? 'text' : 'password'" placeholder="**********" [formControl]="form.controls['password']">
+                    <img src="../../assets/view2.png" alt="" (click)="password()" *ngIf="!show">
+                    <img src="../../assets/noview2.png" alt="" (click)="password()" *ngIf="show">
+                    <div class="text-required" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">La contraseña es requerida.</div>
+                </div>
 
-            <a href="">¿Olvidé mi contraseña?</a>
-            <button (click)="onLogin()">Ingresar</button>
+                <a href="">¿Olvidé mi contraseña?</a>
+                <button type="submit" [disabled]="!form.valid">Ingresar</button>
+            </form>
         </div>
     </div>
 </div>
